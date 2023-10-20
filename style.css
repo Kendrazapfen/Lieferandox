@@ -1,0 +1,167 @@
+body {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    background-color: orange;
+    text-align: center;
+    font-size: larger;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.header img {
+    height: 50px;
+    width: 50px;
+}
+
+.header_icon {
+    display: flex;
+}
+
+h1 {
+    padding-left: 8px;
+}
+
+.footer {
+    background-color: #999999;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+.main {
+    background-color: beige;
+    display: flex;
+}
+
+.main_picture img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border: 2px solid orange;
+    border-radius: 8px;
+}
+
+.logo {
+    position: absolute;
+    left: calc(50% - 150px);
+    top: 330px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 100%;
+    border: 2px solid gold;
+}
+
+.logo img {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+}
+
+.meals {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.meals_container {
+    margin: 50px;
+}
+
+.meals_headline {
+    display: flex;
+}
+
+.meals_headline img {
+    height: 16px;
+    width: 16px;
+}
+
+.meals_headline p {
+    margin-left: 8px;
+}
+
+.time {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 8px;
+    margin-top: 24px;
+}
+
+.time img {
+    height: 16px;
+    width: 16px;
+    margin: 4px;
+}
+
+.basket {
+    background-color: rgb(255, 255, 255);
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: sticky;
+    top: 0;
+}
+
+.basket_headline {
+    font-size: larger;
+    font-weight: 600;
+    border-bottom: 2px solid rgb(213, 213, 213);
+    padding: 24px;
+}
+
+.basket_text {
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+}
+
+.basket_text img {
+    height: 24px;
+    width: 24px;
+}
+
+.basket_text span {
+    padding: 8px;
+}
+
+#trash {
+    display: none;
+}
+
+#sumSection {
+    display: flex;
+    flex-direction: column;
+
+    position: fixed;
+    bottom: 16px;
+    gap: 16px;
+}
+
+.icons {
+    width: 32px;
+    height: 32px;
+}
+
+.card {
+    flex-direction: row !important;
+    justify-content: space-between;
+}

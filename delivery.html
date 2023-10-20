@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lieferandox</title>
+    <script src="foodarray.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_media.css">
+    
+    <!--Bootstrap file-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <!--Favicon-->
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+</head>
+
+<body onload="render()">
+    <header class="header">
+        <div class="header_icon">
+            <img src="img/restaurant.png">
+            <h1>Lieferandox</h1>
+        </div>
+    </header>
+    <content>
+        <div class="main">
+            <div class="meals">
+                <div class="main_picture">
+                    <img src="img/main_image.jpg">
+                    <div class="logo">
+                        <img src="img/logo.png">
+                    </div>
+                </div>
+                <div class="meals_container">
+                    <div>
+                        <div>
+                            <h2>L.A. Pasta</h2>
+                        </div>
+                        <div class="meals_headline">
+                            <span>
+                                <img src="icons/star.png" alt="">
+                                <img src="icons/star.png" alt="">
+                                <img src="icons/star.png" alt="">
+                                <img src="icons/star.png" alt="">
+                                <img src="icons/star.png" alt="">
+                                (898 Bewertungen)
+                            </span>
+                        </div>
+                        <div class="time">
+                            <div>
+                                <img src="icons/clock.png" alt="">
+                                <span> 45min </span>
+                            </div>
+                            <div>
+                                <img src="icons/truck.png" alt="">
+                                <span>5,00€</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="yumyum">
+                    </div>
+                </div>
+
+            </div>
+            <div class="basket" id="contentBasket">
+                <div class="basket_headline" id="emptyBasket">
+                    <h2>Warenkorb</h2>
+                </div>
+                <div class="basket_text">
+                    <img src="icons/bag.png" alt="">
+                    <span>Fülle deinen Warenkorb.</span>
+                </div>
+                <div id="basket"></div>
+                <div onclick="closeBasket(event)" id="trash"><img src="/icons/arrow-24.png">Zur Ansicht</div>
+                <div class="card" id="sumSection"></div>
+                <div id="greetings"></div>
+            </div>
+        </div>
+        <!-- <button class="btn btn-outline-warning" id="payContent" onclick="openBasket(event)"><b id="showSum">Bezahlen</b></button>-->
+    </content>
+    <footer class="footer">
+        <div>
+            © Lieferandox 2023
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+/*responsive*/
+@media(min-width:320px)and(max-width:400px){
+    .meals{
+        width: 50% !important;
+    }
+
+    .meals_container {
+        margin: 12px;
+    }
+
+    
+
+}
