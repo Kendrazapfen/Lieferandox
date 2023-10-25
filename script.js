@@ -24,19 +24,19 @@ function renderMenues() {
 }
 
 function addHTML(menu) {
-    let formattedPrice = menu['price'].toFixed(2).replace('.', ',');
+    let formattedPrice = menu['price'].toFixed(2);
+    let price_string = menu['price_string'];
     return `
     <div class="card p-3 m-4"
         <div>
             <div>
                 <p><b>${menu['name']}</b></p>
                 <p>${menu['description']}</p>
-                <p>${formattedPrice} €</p>
+                <p>${price_string} €</p>
             </div>
-            <button class="btn btn-outline-warning" onclick="addMenu('${menu['name']}', '${formattedPrice}')"><img class="icons" src="/icons/plus.png"></button>
+            <button class="btn btn-outline-warning" onclick="addMenu('${menu['name']}', '${formattedPrice}')"><img class="icons" src="icons/plus.png"></button>
         </div>
     </div>`
-                    
 }
 
 function renderBasket(j, amount, basketMenu, formattedBasketPrice, totalBetweenSum) {
@@ -44,15 +44,15 @@ function renderBasket(j, amount, basketMenu, formattedBasketPrice, totalBetweenS
         document.getElementById('basket').style.display = 'none';
     } else {
         return `
-    <div class="card p-3 m-4 flex-box">
+    <div class="card p-3 m-4">
         <div class="card-body">
             <p class="card-text">${amount}</p>
             <h5 class="card-title">${basketMenu}</h5>
             <p class="card-text">${formattedBasketPrice} €</p>
         </div>
         <div>
-            <button class="btn btn-outline-warning" onclick="reduce(${j})"><img class="icons" src="/icons/minus-24.png"></button>
-            <button class="btn btn-outline-warning" onclick="increase(${j})"><img class="icons" src="/icons/plus-24.png"></button>
+            <button class="btn btn-outline-warning" onclick="reduce(${j})"><img class="icons" src="icons/minus-24.png"></button>
+            <button class="btn btn-outline-warning" onclick="increase(${j})"><img class="icons" src="icons/plus-24.png"></button>
         </div>
     </div>
     `;
@@ -74,15 +74,14 @@ function renderBasketItems() {
         totalBetweenSum += betweenSum;
         totalBetweenSum = parseFloat(totalBetweenSum.toFixed(2));
         let sum = (totalBetweenSum + delivery).toFixed(2).replace('.', ',');
-
         document.getElementById('emptyBasket').style.display = 'none';
         document.getElementById('basket').innerHTML += renderBasket(j, amount, basketMenu, formattedBasketPrice, totalBetweenSum);
         document.getElementById('sumSection').innerHTML = renderBasketSum(totalBetweenSum, formattedDelivery, sum);
-        //document.getElementById('showSum').innerHTML = `<p>Bezahlen ${sum} €</p>`;
+        document.getElementById('showSum').innerHTML = `<p>Bezahlen ${sum} €</p>`;
     }
 }
 
-function subTotal(){
+function renderBasketVariables(){
     
 }
 
@@ -133,41 +132,36 @@ function addMenu(name, formattedPrice) {
 function removeBasket() {
     document.getElementById('basket').style.display = 'none';
     document.getElementById('sumSection').style.display = 'none';
-    document.getElementById('trash').style.display = 'none';
     document.getElementById('greetings').innerHTML = `<p>Vielen Dank für Deine Bestellung!</p>`;
     setTimeout(() => {
         window.location.reload();
     }, 2200);
 }
 
-//function openBasket(event) {
- //   document.getElementById('payContent').style.display = 'none';
- //   document.getElementById('yumyum').style.display = 'none';
- //   document.getElementById('contentBasket').style.display = 'flex';
-//  event.stopPropagation();
-//}
+function openBasket(event) {
+    document.getElementById('yumyum').style.display = 'none';
+    document.getElementById('contentBasket').style.display = 'flex';
+    event.stopPropagation();
+}
 
-//function closeBasket(event) {
-//    document.getElementById('payContent').style.display = 'flex';
-//   document.getElementById('yumyum').style.display = 'block';
-//    document.getElementById('contentBasket').style.display = 'none';
-//    event.stopPropagation();
-//
-//   let totalBetweenSum = 0;
-//   let delivery = 5.00;
-//   for (let j = 0; j < basket_meal.length; j++) {
-//       const basketPrice = parseFloat(basket_prices[j]);
-//        const amount = parseFloat(basket_amounts[j]);
-//        totalBetweenSum += basketPrice * amount;
-//    }
-//    if (basket_meal.length === 0) {
-
-    //    delivery = 5.00;
-    //    window.location.reload();
-//    }
-//    let formattedDelivery = delivery.toFixed(2).replace('.', ',');
-//    let sum = (totalBetweenSum + delivery).toFixed(2).replace('.', ',');
-//    document.getElementById('emptyBasket').style.display = 'none';
-//    document.getElementById('sumSection').innerHTML = renderBasketSum(totalBetweenSum, formattedDelivery, sum);
-//    document.getElementById('showSum').innerHTML = `<p>Bezahlen ${sum} EUR</p>`;
-//}
+function closeBasket(event) {
+    document.getElementById('yumyum').style.display = 'flex';
+    document.getElementById('contentBasket').style.display = 'none';
+    event.stopPropagation();
+    let totalBetweenSum = 0;
+    let delivery = 5.00;
+    for (let j = 0; j < basket_meal.length; j++) {
+        const basketPrice = parseFloat(basket_prices[j]);
+        const amount = parseFloat(basket_amounts[j]);
+        totalBetweenSum += basketPrice * amount;
+    }
+    if (basket_meal.length === 0) {
+        delivery = 5.00;
+        window.location.reload();
+    }
+    let formattedDelivery = delivery.toFixed(2).replace('.', ',');
+    let sum = (totalBetweenSum + delivery).toFixed(2).replace('.', ',');
+    document.getElementById('emptyBasket').style.display = 'none';
+    document.getElementById('sumSection').innerHTML = renderBasketSum(totalBetweenSum, formattedDelivery, sum);
+    document.getElementById('showSum').innerHTML = `<p>Bezahlen ${sum} EUR</p>`;
+}

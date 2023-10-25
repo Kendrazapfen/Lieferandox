@@ -1,13 +1,22 @@
 /*responsive*/
-@media(min-width:320px)and(max-width:400px){
-    .meals{
-        width: 50% !important;
+@media(max-width:320px){
+    .main{
+        display: none;
     }
-
+    .logo{
+        display: none !important;
+    }
+    .main_picture img {
+        display: none;
+    }
     .meals_container {
-        margin: 12px;
+        margin: 8px;
     }
-
+    .meals{
+        width: 100%;
+    }
+    .basket{
+        display: none ;
+    }
     
-
 }
