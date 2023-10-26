@@ -27,15 +27,15 @@ function addHTML(menu) {
     let formattedPrice = menu['price'].toFixed(2);
     let price_string = menu['price_string'];
     return `
-    <div class="card p-3 m-4"
-        <div>
+    <div class="card p-3 m-4">
             <div>
-                <p><b>${menu['name']}</b></p>
-                <p>${menu['description']}</p>
+                <p class="card-text"><b>${menu['name']}</b></p>
+                <p class="media_not_visible">${menu['description']}</p>
                 <p>${price_string} €</p>
             </div>
-            <button class="btn btn-outline-warning" onclick="addMenu('${menu['name']}', '${formattedPrice}')"><img class="icons" src="icons/plus.png"></button>
-        </div>
+            <div>
+                <button class="btn btn-outline-warning" onclick="addMenu('${menu['name']}', '${formattedPrice}')"><img class="icons" src="icons/plus.png"></button>
+            </div>
     </div>`
 }
 
@@ -44,15 +44,15 @@ function renderBasket(j, amount, basketMenu, formattedBasketPrice, totalBetweenS
         document.getElementById('basket').style.display = 'none';
     } else {
         return `
-    <div class="card p-3 m-4">
+    <div class="card p-1 m-2 media_basket">
         <div class="card-body">
             <p class="card-text">${amount}</p>
             <h5 class="card-title">${basketMenu}</h5>
             <p class="card-text">${formattedBasketPrice} €</p>
         </div>
-        <div>
-            <button class="btn btn-outline-warning" onclick="reduce(${j})"><img class="icons" src="icons/minus-24.png"></button>
-            <button class="btn btn-outline-warning" onclick="increase(${j})"><img class="icons" src="icons/plus-24.png"></button>
+        <div class="basket_buttons">
+            <button class="btn btn-outline-warning m-1" onclick="reduce(${j})"><img class="icons" src="icons/minus-24.png"></button>
+            <button class="btn btn-outline-warning m-1" onclick="increase(${j})"><img class="icons" src="icons/plus-24.png"></button>
         </div>
     </div>
     `;
@@ -77,12 +77,8 @@ function renderBasketItems() {
         document.getElementById('emptyBasket').style.display = 'none';
         document.getElementById('basket').innerHTML += renderBasket(j, amount, basketMenu, formattedBasketPrice, totalBetweenSum);
         document.getElementById('sumSection').innerHTML = renderBasketSum(totalBetweenSum, formattedDelivery, sum);
-        document.getElementById('showSum').innerHTML = `<p>Bezahlen ${sum} €</p>`;
+        
     }
-}
-
-function renderBasketVariables(){
-    
 }
 
 function renderBasketSum(totalBetweenSum, formattedDelivery, sum) {
@@ -93,7 +89,7 @@ function renderBasketSum(totalBetweenSum, formattedDelivery, sum) {
     <p class="card-text">Lieferkosten: ${formattedDelivery} €</p>
     <p class="card-text"><b>Gesamtkosten: ${sum} €</b></p>
     </div>
-    <button class="btn btn-outline-warning" onclick="removeBasket()"><b> Bezahlen ${sum} €</b></button>
+    <button class="btn btn-outline-warning pay_button" onclick="removeBasket()"><b> Bestellen ${sum} €</b></button>
     </div>
     `;
 }
@@ -163,5 +159,9 @@ function closeBasket(event) {
     let sum = (totalBetweenSum + delivery).toFixed(2).replace('.', ',');
     document.getElementById('emptyBasket').style.display = 'none';
     document.getElementById('sumSection').innerHTML = renderBasketSum(totalBetweenSum, formattedDelivery, sum);
-    document.getElementById('showSum').innerHTML = `<p>Bezahlen ${sum} EUR</p>`;
+    
+}
+
+function showBasket(){
+    document.getElementById('basket').style.display = 'flex';
 }
