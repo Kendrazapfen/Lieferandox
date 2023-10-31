@@ -16,22 +16,12 @@
         width: 100% !important;
     }
 
-    .header {
-        padding-left: 12px !important;
-        padding-right: 12px !important;
-    }
-
     .header img {
-
         margin-top: 12px;
     }
 
     .meals_headline {
         display: none !important;
-    }
-
-    .media_not_visible {
-        visibility: hidden;
     }
 
     .icons {
@@ -50,9 +40,12 @@
 
 @media(max-width:1200px) {
     .media_basket {
-        margin: 0px !important;
-        
-        width: 0;
+        margin: 0px !important;         
+    }
+
+    .main{
+        flex-direction: column;
+        align-items: center;
     }
 
     .logo {
@@ -66,7 +59,7 @@
     .mobile_visible {
         height: 100px;
         position: fixed;
-        bottom: 0;
+        top: 0;
         left: 0;
         right: 0;
         display: flex;
@@ -86,6 +79,21 @@
         align-items: center;
         font-size: 24px;
     }
+    .basket_text{
+        padding: 8px;
+    }
+    .card{
+        margin-bottom: 8px;
+    }
+    .card-body{
+        padding: 8px;
+    }
+    
+    .icons {
+        width: 16px !important;
+        height: 16px !important;
+    }
+
 }
 
 @media(max-width:800px) {
@@ -99,9 +107,7 @@
 }
 
 @media(max-width:400px) {
-    .main_picture img {
-        display: none;
-    }
+   
     .time {
         display: none !important;
     }
@@ -112,4 +118,19 @@
         flex-direction: column;
         align-items: center;
     }
+    .logo {
+        display: none !important;
+    }
+
+}
+@media(max-width:780px){
+    .card-media {
+        display: flex;
+        position: relative !important;
+        margin-top: 12px;
+        bottom: 16px;
+        font-size: small;
+       
+    }
+    
 }

@@ -3,6 +3,7 @@ let basket_prices = [];
 let basket_amounts = [];
 
 let isBasketOpened = false;
+
 function render(j) {
     renderMenues();
 
@@ -28,7 +29,7 @@ function addHTML(menu) {
     let formattedPrice = menu['price'].toFixed(2);
     let price_string = menu['price_string'];
     return `
-    <div class="card p-3 m-4">
+    <div class="card p-2 m-3">
             <div>
                 <p class="card-text"><b>${menu['name']}</b></p>
                 <p class="media_not_visible">${menu['description']}</p>
@@ -45,7 +46,7 @@ function renderBasket(j, amount, basketMenu, formattedBasketPrice, totalBetweenS
         document.getElementById('basket').style.display = 'none';
     } else {
         return `
-    <div class="card p-1 m-2">
+    <div class="card m-2">
         <div class="card-body">
             <p class="card-text">${amount}</p>
             <h5 class="card-title">${basketMenu}</h5>
@@ -75,18 +76,19 @@ function renderBasketItems() {
         totalBetweenSum += betweenSum;
         totalBetweenSum = parseFloat(totalBetweenSum.toFixed(2));
         let sum = (totalBetweenSum + delivery).toFixed(2).replace('.', ',');
+        let stringTotalBetweenSum = totalBetweenSum.toFixed(2).replace('.', ',');
         document.getElementById('emptyBasket').style.display = 'none';
         document.getElementById('basket').innerHTML += renderBasket(j, amount, basketMenu, formattedBasketPrice, totalBetweenSum);
-        document.getElementById('sumSection').innerHTML = renderBasketSum(totalBetweenSum, formattedDelivery, sum);
+        document.getElementById('sumSection').innerHTML = renderBasketSum(stringTotalBetweenSum, formattedDelivery, sum);
         
     }
 }
 
-function renderBasketSum(totalBetweenSum, formattedDelivery, sum) {
+function renderBasketSum(stringTotalBetweenSum,formattedDelivery, sum) {
     return `
     <div class="">
     <div class="card-body ">
-    <p class="card-text">Zwischensumme: ${totalBetweenSum} €</p>
+    <p class="card-text">Zwischensumme: ${stringTotalBetweenSum} €</p>
     <p class="card-text">Lieferkosten: ${formattedDelivery} €</p>
     <p class="card-text"><b>Gesamtkosten: ${sum} €</b></p>
     </div>
