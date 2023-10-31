@@ -2,6 +2,7 @@ let basket_meal = [];
 let basket_prices = [];
 let basket_amounts = [];
 
+let isBasketOpened = false;
 function render(j) {
     renderMenues();
 
@@ -44,7 +45,7 @@ function renderBasket(j, amount, basketMenu, formattedBasketPrice, totalBetweenS
         document.getElementById('basket').style.display = 'none';
     } else {
         return `
-    <div class="card p-1 m-2 media_basket">
+    <div class="card p-1 m-2">
         <div class="card-body">
             <p class="card-text">${amount}</p>
             <h5 class="card-title">${basketMenu}</h5>
@@ -162,6 +163,13 @@ function closeBasket(event) {
     
 }
 
-function showBasket(){
-    document.getElementById('basket').style.display = 'flex';
-}
+function showBasket(event){
+        if (isBasketOpened) {
+            closeBasket(event);
+            isBasketOpened = !isBasketOpened;
+        } else {
+            openBasket(event);
+            isBasketOpened = !isBasketOpened;
+        }
+       
+    }

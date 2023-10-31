@@ -16,8 +16,6 @@
         width: 100% !important;
     }
 
-    
-
     .header {
         padding-left: 12px !important;
         padding-right: 12px !important;
@@ -44,17 +42,23 @@
     p {
         margin-bottom: 0.5rem !important;
     }
+    .main{
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 @media(max-width:1200px) {
     .media_basket {
         margin: 0px !important;
+        
+        width: 0;
     }
 
     .logo {
         display: none !important;
     }
-
+    
     .meals_container {
         margin: 12px !important;
     }
@@ -65,7 +69,7 @@
         bottom: 0;
         left: 0;
         right: 0;
-        display: flex !important;
+        display: flex;
         justify-content: center;
         align-items: center;
         background-color: white;
@@ -88,22 +92,24 @@
     .main_picture img {
         display: none;
     }
-
-   
+    .main{
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 @media(max-width:400px) {
     .main_picture img {
         display: none;
     }
-
-    
-
     .time {
         display: none !important;
     }
-
     .meals_headline {
         display: none !important;
+    }
+    .main{
+        flex-direction: column;
+        align-items: center;
     }
 }
