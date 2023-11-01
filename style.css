@@ -121,6 +121,8 @@ h1 {
     visibility: visible;
     margin-left: 12px;
     margin-right: 12px;
+    max-height: 60vh;
+    overflow: auto;
 }
 
 .basket_headline {
@@ -178,6 +180,6 @@ h1 {
     display: flex;
     flex-direction: column;
 }
-/* .mobile_visible{
-   display: none;
-}*/
+.mobile-visible{
+    display: none;
+}

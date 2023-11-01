@@ -39,6 +39,7 @@
 }
 
 @media(max-width:1200px) {
+   
     .media_basket {
         margin: 0px !important;         
     }
