@@ -6,7 +6,7 @@ let isBasketOpened = false;
 
 function render(j) {
     renderMenues();
-
+    document.getElementById('only_mobile_visible').style.display='none';
     if (j === 0) {
         document.getElementById('emptyBasket').style.display = 'flex';
         document.getElementById('basket').innerHTML = '';
